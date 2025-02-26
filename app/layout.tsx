@@ -1,0 +1,32 @@
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import Navbar from "./components/navbar/Navbar";
+
+import "./styles/global.scss";
+import styles from "./layout.module.css";
+
+
+
+const inter = Inter({
+  subsets: ["latin"],
+});
+
+export const metadata: Metadata = {
+  title: "Kevin Tolbert",
+  description: "Kevin Tolbert's portfolio website.",
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en">
+      <body className={inter.className}>
+        <Navbar />
+        {children}
+      </body>
+    </html>
+  );
+}

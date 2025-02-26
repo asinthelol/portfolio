@@ -1,0 +1,26 @@
+@use "./mixins" as *;
+@use "./variables" as *;
+
+html {
+  /* The scrollbar doesn't offset the rest of the page anymore. */
+  scrollbar-gutter: stable;
+  scroll-behavior: smooth;
+
+  body {
+    @include flex(space-between, center, row);
+
+    position: relative;
+    background-color: $background-color;
+    color: $text-color;
+
+    /*  Svh makes it so mobile ui elements do not affect layout presentation. */
+    min-height: 100vh;
+    min-height: 100svh;
+
+    main {
+      flex-grow: 1;
+      
+      margin: 4rem 0;
+    }
+  }
+}

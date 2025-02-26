@@ -1,0 +1,46 @@
+@use "../../styles/mixins" as *;
+@use "../../styles/variables" as *;
+
+#header {
+  width: 100%;
+
+  #navbar-wrapper {
+    height: 5rem;
+
+    #navbar {
+      @include flex(space-between, center);
+
+      list-style: none;
+
+      #navbar-logo {
+        width: 2rem;
+        height: 2rem;
+
+        svg {
+          fill: $text-color;
+
+          height: 2rem;
+        }
+      }
+
+      #navbar-links {
+        @include flex(space-between, center, row);
+
+        // width: 10rem;
+
+        column-gap: 1rem;
+
+        a {
+          text-decoration: none;
+          color: $text-color-secondary;
+      
+          transition: color $transition-duration ease-in-out;
+      
+          &:hover {
+            color: $text-color;
+          }
+        }
+      }
+    }
+  }
+}
