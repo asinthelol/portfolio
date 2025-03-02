@@ -1,12 +1,8 @@
 @use "../../styles/mixins" as *;
 @use "../../styles/variables" as *;
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
 
 #header {
-  width: 100%;
-
   #navbar-wrapper {
-    height: 5rem;
     width: 100%;
     margin: 3rem 0;
 
@@ -80,7 +76,12 @@
           }
 
           &:nth-of-type(3) {
-            font-size: 2rem;
+            font-size: 3rem;
+            font-weight: 200;
+
+            cursor: pointer;
+            user-select: none;
+
             &.openButton {
               transform: rotate(45deg);
             }

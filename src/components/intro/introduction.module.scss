@@ -1,0 +1,57 @@
+@use "../../styles/variables.scss" as *;
+@use "../..//styles/mixins.scss" as *;
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=keyboard_arrow_down");
+
+#intro-wrapper {
+  @include flex(flex-start, center, column);
+  position: relative;
+
+  row-gap: 4rem;
+
+  #intro {
+    @include flex(center, center, column);
+    h1 {
+      font-family: $Megdira;
+      font-size: clamp(3.5rem, 12vw, 12rem);
+      font-weight: normal;
+      line-height: clamp(3rem, 10vw, 10rem);
+      text-align: center;
+    }
+    span {
+      font-size: clamp(0.6rem, 1.25vw, 1.25rem);
+      font-weight: 200;
+      text-align: center;
+      letter-spacing: 0.1rem;
+      color: $text-color-secondary;
+    }
+  }
+
+  #down-arrow-wrapper {
+    @include flex;
+    position: relative;
+
+    /* Maybe I'm looking at this wrong, but this controls the distance from
+    * the element above AND the distance moved when floating.
+    */
+    top: 3rem;
+
+    animation:
+      floating infinite 2s ease-in-out alternate;
+
+    span {
+      position: relative;
+
+      color: $text-color-secondary;
+      opacity: 0.75;
+  
+    }
+  }
+}
+
+/* Animation */
+
+@keyframes floating {
+  50% {
+    top: 0.5em;
+  }
+}
