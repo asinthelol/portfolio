@@ -34,7 +34,7 @@ export default function Contact() {
       <h2>CONTACT</h2>
 
       <form onSubmit={handleSubmit}>
-        <input type="hidden" name="access_key" value="7b99d50a-4353-4b21-adeb-d69d14203b57" />
+        <input type="hidden" name="access_key" value="ad55e1de-2843-464b-949a-42266a2895d0" />
         
         <label htmlFor="name">YOUR NAME</label>
         <input id="name" type="text" name="name" required />
