@@ -9,5 +9,8 @@ export default defineConfig({
     headers: {
       "Permissions-Policy": "interest-cohort=()"
     }
+  },
+  build: {
+    minify: "esbuild",
   }
 })

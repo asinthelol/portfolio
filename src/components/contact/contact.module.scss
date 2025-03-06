@@ -1,0 +1,64 @@
+@use "../../styles/mixins.scss" as *;
+@use "../../styles/variables.scss" as *;
+
+.contact-wrapper {
+  @include flex(center, center, column);
+  row-gap: 4rem;
+
+  width: clamp(18.75rem, 60vw, 40rem);
+
+  form {
+    @include flex(center, flex-start, column);
+    width: 100%;
+
+    label {
+      font-size: 1rem;
+    }
+    
+    input, textarea {
+      font-family: "Inter", sans-serif;
+      font-size: 1rem;
+      color: $text-color;
+
+      width: 100%;
+
+      border-bottom: solid 2px $text-color;
+      border-radius: 0;
+      margin: 2rem 0;
+      padding-bottom: 0.5rem;
+      outline: none;
+
+      background-color: transparent;
+    }
+
+    button {
+      @include flex;
+      cursor: pointer;
+
+      color: $background-color;
+      font-size: 1rem;
+      font-family: "Inter", sans-serif;
+
+      width: inherit;
+      height: 3rem;
+
+      border: solid thin $text-color;
+      border-radius: 2rem;
+      padding: 1rem 0;
+
+      background-color: $text-color;
+
+      transition: background-color $transition-duration ease-in-out;
+
+      &:hover {
+        color: $text-color;
+
+        background-color: $background-color;
+      }
+    }
+  }
+
+  .instance {
+    text-align: center;
+  }
+}
