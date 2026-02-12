@@ -9,6 +9,42 @@ export default function Projects() {
 
         <div className={styles["project-card"]}>
           <div className={styles["project-photo"]}>
+            <img src="\project-photos\dashboard.webp" alt="Photo of Dashboard Analytics App project" loading="lazy" />
+          </div>
+
+          <div className={styles["project-info"]}>
+            <h3>
+              <a href="https://github.com/asinthelol/zephyr/" target="_blank" rel="noreferrer">
+                Dashboard Analytics App
+                <span className="material-symbols-outlined">
+                  arrow_outward
+                </span>
+              </a>
+            </h3>
+            <p>Dec 2025</p>
+          </div>
+        </div>
+
+        <div className={styles["project-card"]}>
+          <div className={styles["project-photo"]}>
+            <img src="\project-photos\networking.webp" alt="Photo of Social Networking App project" loading="lazy" style={{objectPosition: "top"}}/>
+          </div>
+
+          <div className={styles["project-info"]}>
+            <h3>
+              <a href="https://github.com/asinthelol/social-networking-app/" target="_blank" rel="noreferrer">
+                Social Networking App
+                <span className="material-symbols-outlined">
+                  arrow_outward
+                </span>
+              </a>
+            </h3>
+            <p>Dec 2025</p>
+          </div>
+        </div>
+
+        <div className={styles["project-card"]}>
+          <div className={styles["project-photo"]}>
             <img src="\project-photos\fluid.webp" alt="Photo of Fluid Simulation project" loading="lazy" />
           </div>
 
