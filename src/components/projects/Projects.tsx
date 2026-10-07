@@ -19,7 +19,7 @@ const PROJECTS: Project[] = [
     href: "https://github.com/asinthelol/zephyr/",
     image: "/project-photos/dashboard.webp",
     alt: "Photo of Dashboard Analytics App project",
-    tags: ["TypeScript"]
+    tags: ["TypeScript", "Python", "SQLite", "Data"]
   },
   {
     title: "Social Networking App",
@@ -28,20 +28,7 @@ const PROJECTS: Project[] = [
     image: "/project-photos/networking.webp",
     alt: "Photo of Social Networking App project",
     objectPosition: "top",
-  },
-  {
-    title: "Fluid Simulator",
-    date: "Nov 2025",
-    href: "https://github.com/asinthelol/fluid-simulator/",
-    image: "/project-photos/fluid.webp",
-    alt: "Photo of Fluid Simulation project",
-  },
-  {
-    title: "Gravity Simulator",
-    date: "Nov 2025",
-    href: "https://github.com/asinthelol/gravity-simulator/",
-    image: "/project-photos/gravity.webp",
-    alt: "Photo of Gravity Simulation project",
+    tags: ["TypeScript", "Python", "SQLite", "AWS", "Docker", "CI/CD"]
   },
   {
     title: "ImageHub",
@@ -49,13 +36,8 @@ const PROJECTS: Project[] = [
     href: "https://github.com/asinthelol/imagehub/",
     image: "/project-photos/imagehub.webp",
     alt: "Photo of ImageHub project",
-  },
-  {
-    title: "Spotify Player",
-    date: "Mar 2025",
-    href: "https://github.com/asinthelol/spotify-music-player/",
-    image: "/project-photos/webplayer.webp",
-    alt: "Photo of Spotify playback project",
+    tags: ["TypeScript", "Java", "C#", "PostgreSQL", "Spring Boot", "Kafka", "Docker"]
+    
   },
 ];
 
