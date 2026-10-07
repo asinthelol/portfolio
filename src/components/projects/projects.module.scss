@@ -1,79 +1,233 @@
 @use "../../styles/variables.scss" as *;
 @use "../..//styles/mixins.scss" as *;
 
+$line-color: rgba($text-color, 0.18);
+$ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+$radius: 0.75rem;
+
+// global.scss styles `main h2` through #root, so this heading needs matching
+// specificity to override it.
+:global(html body #root main) .projects-wrapper .projects-header h2 {
+  margin: 0;
+  font-family: $InstrumentSerif;
+  font-size: clamp(3rem, 8vw, 5rem);
+  font-weight: normal;
+  line-height: 0.95;
+
+  em { font-style: italic; }
+}
+
 .projects-wrapper {
-  @include flex(center, center, column);
+  @include flex(flex-start, stretch, column);
+
+  width: 100%;
+  padding: 0 clamp(1rem, 5vw, 6rem);
+
+  .projects-header {
+    @include flex(space-between, flex-end, row);
+    gap: 1.5rem;
+    margin-bottom: 3.5rem;
+
+    .title {
+      @include flex(flex-start, flex-start, column);
+      gap: 1.25rem;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.9rem;
+      border: 1px solid $line-color;
+      border-radius: 999px;
+
+      font-size: 0.7rem;
+      letter-spacing: 0.15rem;
+      text-transform: uppercase;
+
+      .dot {
+        width: 0.4rem;
+        height: 0.4rem;
+        border-radius: 50%;
+        background: $text-color;
+      }
+    }
+  }
 
   #projects {
-    @include flex(center, flex-start, row);
-    flex-wrap: wrap;
-    gap: 2rem;
-
-    margin-top: 4rem;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(2rem, 3vw, 3rem) clamp(1rem, 1.5vw, 1.5rem);
 
     .project-card {
-      @include flex(center, center, column);
-      row-gap: 0.5rem;
-  
-      width: clamp(18.75rem, 40vw, 40rem);
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+
+      opacity: 0;
+      transform: translateY(2rem);
+      transition:
+        opacity 0.9s ease,
+        transform 0.9s $ease-out;
+      transition-delay: calc(var(--i) * 0.1s);
+
+      &[data-visible="true"] {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .project-photo {
+        position: relative;
+        overflow: hidden;
+        aspect-ratio: 4 / 3;
+        border-radius: $radius;
+        background: $line-color;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 1.2s $ease-out;
+        }
+
+        // Dim layer with centered arrow and repo label, revealed on hover.
+        .overlay {
+          position: absolute;
+          inset: 0;
+          @include flex;
+
+          background: rgba($text-color, 0.55);
+          color: $background-color;
+          font-size: 0.8rem;
+          opacity: 0;
+          transition: opacity 0.4s ease;
+
+          .badge {
+            @include flex;
+            width: 3.5rem;
+            height: 3.5rem;
+            border-radius: 50%;
+            background: $text-color;
+            font-size: 1.5rem;
+
+            transform: scale(0.7);
+            transition: transform 0.5s $ease-out;
+          }
+
+          .source,
+          .repo {
+            position: absolute;
+            bottom: 0.9rem;
+          }
+          .source { left: 1rem; }
+          .repo   { right: 1rem; }
+        }
+      }
 
       .project-info {
-        @include flex(space-between, center, row);
-        row-gap: 0.5rem;
-  
-        width: 100%;
+        @include flex(space-between, baseline, row);
+        gap: 1rem;
 
         h3 {
-          font-size: 1rem;
+          font-size: 0.95rem;
           font-weight: 400;
-
-          a {
-            @include flex;
-            column-gap: 0.25rem;
-
-            &::after {
-              content: '';
-              position: absolute;
-              width: 100%;
-              height: 2px;
-              bottom: -0.25rem;
-              left: 0;
-              background-color: $text-color;
-              visibility: visible;
-              transition: all $transition-duration ease-in-out;
-            }
-
-            span {
-              font-size: 1rem;
-            }
-          
-            &:hover {
-              &::after {
-                width: 100%;
-              }
-            }
-          }
         }
-
 
         p {
-          @include flex(flex-end);
-          column-gap: 0.25rem;
-  
-          font-weight: 400;
-          text-align: left;
+          font-size: 0.75rem;
+          opacity: 0.6;
+          white-space: nowrap;
         }
       }
-  
-      .project-photo {
-        @include flex;
-  
-        img {
-          width: clamp(18.75rem, 40vw, 40rem);
-          height: calc(clamp(18.75rem, 40vw, 40rem) * 9 / 16);
-          object-fit: cover;
+
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.25rem 0.75rem;
+        list-style: none;
+
+        font-size: 0.65rem;
+        letter-spacing: 0.12rem;
+        text-transform: uppercase;
+        opacity: 0.7;
+      }
+
+      &:hover,
+      &:focus-visible {
+        .project-photo {
+          img { transform: scale(1.04); }
+          .overlay {
+            opacity: 1;
+            .badge { transform: scale(1); }
+          }
         }
       }
+    }
+  }
+
+  .projects-header .view-more {
+    @include flex;
+    gap: 1.5rem;
+    padding-bottom: 0.5rem;
+
+    font-size: 0.9rem;
+    white-space: nowrap;
+
+    .action {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding-bottom: 0.15rem;
+      border-bottom: 1px solid transparent;
+      transition: border-color $transition-duration ease;
+
+      span { transition: transform $transition-duration ease; }
+    }
+
+    &:hover .action {
+      border-color: $text-color;
+      span { transform: translateX(0.25rem); }
+    }
+  }
+
+  @media screen and (max-width: $landscape-breakpoint) {
+    #projects { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+  @media screen and (max-width: $mobile-breakpoint) {
+    padding: 0;
+
+    // Drop the label on mobile, I don't think it looks that good.
+    .projects-header {
+      gap: 1rem;
+      .view-more > span:first-child { display: none; }
+    }
+
+    #projects { grid-template-columns: 1fr; }
+
+    // Keep a small arrow visible instead of the full overlay.
+    #projects .project-card .project-photo .overlay {
+      opacity: 1;
+      background: transparent;
+      justify-content: flex-end;
+      align-items: flex-start;
+      padding: 0.75rem;
+
+      .badge {
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1.25rem;
+        transform: none;
+      }
+      .source, .repo { display: none; }
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #projects .project-card {
+      opacity: 1;
+      transform: none;
+      transition: none;
     }
   }
 }
