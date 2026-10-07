@@ -40,7 +40,7 @@ html {
         
         margin: 20rem 2rem;
 
-        row-gap: 20rem;
+        row-gap: 10rem;
 
 
         h2 {
@@ -61,7 +61,7 @@ html {
 
       @media screen and (max-width: $portrait-breakpoint) {
         main {
-          row-gap: 15rem;
+          row-gap: 10rem;
         }
       }
 
