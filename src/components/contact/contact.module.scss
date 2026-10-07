@@ -1,64 +1,56 @@
 @use "../../styles/mixins.scss" as *;
 @use "../../styles/variables.scss" as *;
 
+$ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+// global.scss styles `main h2` through #root, so this heading needs matching
+// specificity to override it.
+:global(html body #root main) .contact-wrapper .panel h2 {
+  margin: 0;
+  font-family: $InstrumentSerif;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: normal;
+  line-height: 1;
+  text-align: center;
+
+  em { font-style: italic; }
+}
+
 .contact-wrapper {
-  @include flex(center, center, column);
-  row-gap: 4rem;
+  width: 100%;
+  padding: 0 clamp(1rem, 5vw, 6rem);
 
-  width: clamp(18.75rem, 60vw, 40rem);
+  .panel {
+    @include flex(center, center, column);
+    gap: 1.5rem;
 
-  form {
-    @include flex(center, flex-start, column);
-    width: 100%;
+    padding: clamp(3rem, 8vw, 6rem) clamp(1.5rem, 5vw, 4rem) clamp(1.5rem, 3vw, 2rem);
+    border-radius: 1.25rem;
+    background-color: rgba($text-color, 0.05);
 
-    label {
-      font-size: 1rem;
-    }
-    
-    input, textarea {
-      font-family: "Inter", sans-serif;
-      font-size: 1rem;
-      color: $text-color;
-
-      width: 100%;
-
-      border-bottom: solid 2px $text-color;
-      border-radius: 0;
-      margin: 2rem 0;
-      padding-bottom: 0.5rem;
-      outline: none;
-
-      background-color: transparent;
+    p {
+      max-width: 36rem;
+      font-size: clamp(0.85rem, 1.1vw, 1rem);
+      font-weight: 200;
+      line-height: 1.7;
+      text-align: center;
     }
 
-    button {
+    .cta {
       @include flex;
-      cursor: pointer;
+      gap: 0.4rem;
+      margin-top: 1rem;
+      padding-bottom: 0.2rem;
 
-      color: $background-color;
       font-size: 1rem;
-      font-family: "Inter", sans-serif;
+      border-bottom: 1px solid $text-color;
 
-      width: inherit;
-      height: 3rem;
-
-      border: solid thin $text-color;
-      border-radius: 2rem;
-      padding: 1rem 0;
-
-      background-color: $text-color;
-
-      transition: background-color $transition-duration ease-in-out;
-
-      &:hover {
-        color: $text-color;
-
-        background-color: $background-color;
+      span {
+        font-size: 1.1rem;
+        transition: transform $transition-duration ease;
       }
-    }
-  }
 
-  .instance {
-    text-align: center;
+      &:hover span { transform: translate(0.15rem, -0.15rem); }
+    }
   }
 }
