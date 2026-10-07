@@ -36,10 +36,16 @@ $ease-out: cubic-bezier(0.16, 1, 0.3, 1);
       text-align: center;
     }
 
+    .links {
+      @include flex;
+      flex-wrap: wrap;
+      gap: 1rem 2.5rem;
+      margin-top: 1rem;
+    }
+
     .cta {
       @include flex;
       gap: 0.4rem;
-      margin-top: 1rem;
       padding-bottom: 0.2rem;
 
       font-size: 1rem;
@@ -51,6 +57,7 @@ $ease-out: cubic-bezier(0.16, 1, 0.3, 1);
       }
 
       &:hover span { transform: translate(0.15rem, -0.15rem); }
+      &[download]:hover span { transform: translateY(0.15rem); }
     }
   }
 }
