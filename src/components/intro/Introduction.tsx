@@ -54,6 +54,17 @@ export default function Introduction() {
               <li key={skill}>{skill}</li>
             ))}
           </ul>
+
+          <div className={styles.experience} style={delay(6)}>
+            <span className={styles.label}>Experience</span>
+            <div className={styles.role}>
+              <div>
+                <h3>Software Engineer Co-Op</h3>
+                <p>SoonForward &middot; New York, NY</p>
+              </div>
+              <time>May 2026 &ndash; Present</time>
+            </div>
+          </div>
         </aside>
       </div>
 
